@@ -1,0 +1,202 @@
+I, [2016-06-23T13:54:51.766390 #4070]  INFO -- default-centos-67: -----> Cleaning up any prior instances of <default-centos-67>
+I, [2016-06-23T13:54:51.766688 #4070]  INFO -- default-centos-67: -----> Destroying <default-centos-67>...
+I, [2016-06-23T13:54:51.767497 #4070]  INFO -- default-centos-67: Finished destroying <default-centos-67> (0m0.00s).
+I, [2016-06-23T13:54:51.767770 #4070]  INFO -- default-centos-67: -----> Testing <default-centos-67>
+I, [2016-06-23T13:54:51.768022 #4070]  INFO -- default-centos-67: -----> Creating <default-centos-67>...
+I, [2016-06-23T13:54:51.962091 #4070]  INFO -- default-centos-67: Sending build context to Docker daemon 168.4 kB
+I, [2016-06-23T13:54:51.962335 #4070]  INFO -- default-centos-67: Sending build context to Docker daemon 
+I, [2016-06-23T13:54:52.010909 #4070]  INFO -- default-centos-67: Step 0 : FROM centos:6.7
+I, [2016-06-23T13:54:52.014871 #4070]  INFO -- default-centos-67:  ---> 4c4146277fb1
+I, [2016-06-23T13:54:52.015528 #4070]  INFO -- default-centos-67: Step 1 : RUN yum clean all
+I, [2016-06-23T13:54:52.161137 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.161810 #4070]  INFO -- default-centos-67:  ---> a47fdd1c2a03
+I, [2016-06-23T13:54:52.162294 #4070]  INFO -- default-centos-67: Step 2 : RUN yum install -y sudo openssh-server openssh-clients which curl
+I, [2016-06-23T13:54:52.184791 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.185416 #4070]  INFO -- default-centos-67:  ---> d21d61647711
+I, [2016-06-23T13:54:52.185836 #4070]  INFO -- default-centos-67: Step 3 : RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+I, [2016-06-23T13:54:52.205817 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.206383 #4070]  INFO -- default-centos-67:  ---> 57e535a5695c
+I, [2016-06-23T13:54:52.206795 #4070]  INFO -- default-centos-67: Step 4 : RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key -N ''
+I, [2016-06-23T13:54:52.227957 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.228744 #4070]  INFO -- default-centos-67:  ---> 2b6b7403c97f
+I, [2016-06-23T13:54:52.229183 #4070]  INFO -- default-centos-67: Step 5 : RUN if ! getent passwd kitchen; then useradd -d /home/kitchen -m -s /bin/bash kitchen; fi
+I, [2016-06-23T13:54:52.256552 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.257021 #4070]  INFO -- default-centos-67:  ---> 969db18f56ec
+I, [2016-06-23T13:54:52.257641 #4070]  INFO -- default-centos-67: Step 6 : RUN echo kitchen:kitchen | chpasswd
+I, [2016-06-23T13:54:52.276413 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.276912 #4070]  INFO -- default-centos-67:  ---> 743b3a27f908
+I, [2016-06-23T13:54:52.277598 #4070]  INFO -- default-centos-67: Step 7 : RUN echo 'kitchen ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+I, [2016-06-23T13:54:52.295947 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.296505 #4070]  INFO -- default-centos-67:  ---> 953ed9e8df99
+I, [2016-06-23T13:54:52.296959 #4070]  INFO -- default-centos-67: Step 8 : RUN mkdir -p /etc/sudoers.d
+I, [2016-06-23T13:54:52.314369 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.314818 #4070]  INFO -- default-centos-67:  ---> 90e413bd3ad7
+I, [2016-06-23T13:54:52.315478 #4070]  INFO -- default-centos-67: Step 9 : RUN echo 'kitchen ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers.d/kitchen
+I, [2016-06-23T13:54:52.333656 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.334148 #4070]  INFO -- default-centos-67:  ---> 070ec2a6a35e
+I, [2016-06-23T13:54:52.334787 #4070]  INFO -- default-centos-67: Step 10 : RUN chmod 0440 /etc/sudoers.d/kitchen
+I, [2016-06-23T13:54:52.354461 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.354976 #4070]  INFO -- default-centos-67:  ---> 02adb14ebd2d
+I, [2016-06-23T13:54:52.355800 #4070]  INFO -- default-centos-67: Step 11 : RUN [ ! -d /home/kitchen/.ssh ] && mkdir /home/kitchen/.ssh
+I, [2016-06-23T13:54:52.378153 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.378703 #4070]  INFO -- default-centos-67:  ---> c33da15ce6bd
+I, [2016-06-23T13:54:52.379164 #4070]  INFO -- default-centos-67: Step 12 : RUN chown -R kitchen /home/kitchen/.ssh
+I, [2016-06-23T13:54:52.396835 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.397611 #4070]  INFO -- default-centos-67:  ---> 91ca9348e993
+I, [2016-06-23T13:54:52.398030 #4070]  INFO -- default-centos-67: Step 13 : RUN chmod 0700 /home/kitchen/.ssh
+I, [2016-06-23T13:54:52.415357 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.415795 #4070]  INFO -- default-centos-67:  ---> e3272d00c2a3
+I, [2016-06-23T13:54:52.416468 #4070]  INFO -- default-centos-67: Step 14 : RUN echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCpFN4CTatg/VVIqi7OjffQgptZJrinZ4+rreYB6M0fV+Klc+tsQGPbLhF5Yh41jii6YexjfppTpaQNqbQ0HYyme9K1FSXqjZoOqaqIfYTN/V7PwxGIIQVYxcAmFTZ0ceHaDLwdSHZeFCplznk8lyNKl3CuJJx513vi7wn5mOJPfttlmFGT6BZw85eXW5vMh2UFh2TYXy+qnRjaLbtSXr8aHQmVq0DawiDQOOtghWlPftFN1xHtZ+twc6el3a7yVs+l0oBJ7BwB8ggD7QSv1HYaxea8oYmiXEOVTz0e5cEwBjG6i/RnVyWFK9N/UEmp7YYVLlfrD8hqN89kDPNdntX3 kitchen_docker_key' >> /home/kitchen/.ssh/authorized_keys
+I, [2016-06-23T13:54:52.433747 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.434387 #4070]  INFO -- default-centos-67:  ---> 3d0c6f5f4877
+I, [2016-06-23T13:54:52.434811 #4070]  INFO -- default-centos-67: Step 15 : RUN chown kitchen /home/kitchen/.ssh/authorized_keys
+I, [2016-06-23T13:54:52.453180 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.453695 #4070]  INFO -- default-centos-67:  ---> a58c6eab8d89
+I, [2016-06-23T13:54:52.454156 #4070]  INFO -- default-centos-67: Step 16 : RUN chmod 0600 /home/kitchen/.ssh/authorized_keys
+I, [2016-06-23T13:54:52.473111 #4070]  INFO -- default-centos-67:  ---> Using cache
+I, [2016-06-23T13:54:52.473584 #4070]  INFO -- default-centos-67:  ---> 3b5a80bc4bba
+I, [2016-06-23T13:54:52.474017 #4070]  INFO -- default-centos-67: Successfully built 3b5a80bc4bba
+I, [2016-06-23T13:54:52.835023 #4070]  INFO -- default-centos-67: cc20b1f2058cf8a677bd72bb2908e328fb32cc552f7e74349b5dbadc2405a569
+I, [2016-06-23T13:54:53.485603 #4070]  INFO -- default-centos-67: 0.0.0.0:32778
+I, [2016-06-23T13:54:53.717910 #4070]  INFO -- default-centos-67: [SSH] Established
+I, [2016-06-23T13:54:53.722284 #4070]  INFO -- default-centos-67: Finished creating <default-centos-67> (0m1.95s).
+I, [2016-06-23T13:54:53.722594 #4070]  INFO -- default-centos-67: -----> Converging <default-centos-67>...
+W, [2016-06-23T13:54:53.724333 #4070]  WARN -- default-centos-67: Running legacy converge for 'Docker' Driver
+I, [2016-06-23T13:54:53.724740 #4070]  INFO -- default-centos-67: Preparing files for transfer
+I, [2016-06-23T13:54:53.724913 #4070]  INFO -- default-centos-67: Preparing dna.json
+I, [2016-06-23T13:54:53.726392 #4070]  INFO -- default-centos-67: Resolving cookbook dependencies with Berkshelf 4.1.1...
+I, [2016-06-23T13:54:53.899680 #4070]  INFO -- default-centos-67: Removing non-cookbook files before transfer
+I, [2016-06-23T13:54:53.904094 #4070]  INFO -- default-centos-67: Preparing validation.pem
+I, [2016-06-23T13:54:53.905452 #4070]  INFO -- default-centos-67: Preparing client.rb
+I, [2016-06-23T13:54:54.084182 #4070]  INFO -- default-centos-67: -----> Installing Chef Omnibus (install only if missing)
+I, [2016-06-23T13:54:54.091704 #4070]  INFO -- default-centos-67: Downloading https://www.chef.io/chef/install.sh to file /tmp/install.sh
+I, [2016-06-23T13:54:54.093680 #4070]  INFO -- default-centos-67: Trying curl...
+I, [2016-06-23T13:54:54.314001 #4070]  INFO -- default-centos-67: Download complete.
+I, [2016-06-23T13:54:54.377044 #4070]  INFO -- default-centos-67: el 6 x86_64
+I, [2016-06-23T13:54:54.377208 #4070]  INFO -- default-centos-67: Getting information for chef stable  for el...
+I, [2016-06-23T13:54:54.378800 #4070]  INFO -- default-centos-67: downloading https://omnitruck-direct.chef.io/stable/chef/metadata?v=&p=el&pv=6&m=x86_64
+I, [2016-06-23T13:54:54.378880 #4070]  INFO -- default-centos-67:   to file /tmp/install.sh.29/metadata.txt
+I, [2016-06-23T13:54:54.381666 #4070]  INFO -- default-centos-67: trying curl...
+I, [2016-06-23T13:54:54.882384 #4070]  INFO -- default-centos-67: sha1	44e71beed0cc0db2481c3e3d2108ad218c32dade
+I, [2016-06-23T13:54:54.882548 #4070]  INFO -- default-centos-67: sha256	e51559dc7747c03b446f9d1a3cdbb122f274352ba0ed7dd8fdac41e10514b9e2
+I, [2016-06-23T13:54:54.882654 #4070]  INFO -- default-centos-67: url	https://packages.chef.io/stable/el/6/chef-12.11.18-1.el6.x86_64.rpm
+I, [2016-06-23T13:54:54.884721 #4070]  INFO -- default-centos-67: version	12.11.18
+I, [2016-06-23T13:54:54.892797 #4070]  INFO -- default-centos-67: downloaded metadata file looks valid...
+I, [2016-06-23T13:54:54.939126 #4070]  INFO -- default-centos-67: downloading https://packages.chef.io/stable/el/6/chef-12.11.18-1.el6.x86_64.rpm
+I, [2016-06-23T13:54:54.939296 #4070]  INFO -- default-centos-67:   to file /tmp/install.sh.29/chef-12.11.18-1.el6.x86_64.rpm
+I, [2016-06-23T13:54:54.941739 #4070]  INFO -- default-centos-67: trying curl...
+I, [2016-06-23T13:54:57.357026 #4070]  INFO -- default-centos-67: Comparing checksum with sha256sum...
+I, [2016-06-23T13:54:58.169141 #4070]  INFO -- default-centos-67: 
+I, [2016-06-23T13:54:58.169338 #4070]  INFO -- default-centos-67: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+I, [2016-06-23T13:54:58.169478 #4070]  INFO -- default-centos-67: 
+I, [2016-06-23T13:54:58.169537 #4070]  INFO -- default-centos-67: You are installing an omnibus package without a version pin.  If you are installing
+I, [2016-06-23T13:54:58.169592 #4070]  INFO -- default-centos-67: on production servers via an automated process this is DANGEROUS and you will
+I, [2016-06-23T13:54:58.169648 #4070]  INFO -- default-centos-67: be upgraded without warning on new releases, even to new major releases.
+I, [2016-06-23T13:54:58.169703 #4070]  INFO -- default-centos-67: Letting the version float is only appropriate in desktop, test, development or
+I, [2016-06-23T13:54:58.169757 #4070]  INFO -- default-centos-67: CI/CD environments.
+I, [2016-06-23T13:54:58.169808 #4070]  INFO -- default-centos-67: 
+I, [2016-06-23T13:54:58.169861 #4070]  INFO -- default-centos-67: WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING
+I, [2016-06-23T13:54:58.169914 #4070]  INFO -- default-centos-67: 
+I, [2016-06-23T13:54:58.169965 #4070]  INFO -- default-centos-67: Installing chef 
+I, [2016-06-23T13:54:58.171832 #4070]  INFO -- default-centos-67: installing with rpm...
+I, [2016-06-23T13:54:58.438191 #4070]  INFO -- default-centos-67: warning: /tmp/install.sh.29/chef-12.11.18-1.el6.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+I, [2016-06-23T13:54:58.863009 #4070]  INFO -- default-centos-67: Preparing...                                                            (100%)#                                           (100%)##                                          (100%)###                                         (100%)####                                        (100%)#####                                       (100%)######                                      (100%)#######                                     (100%)########                                    (100%)#########                                   (100%)##########                                  (100%)###########                                 (100%)############                                (100%)#############                               (100%)##############                              (100%)###############                             (100%)################                            (100%)#################                           (100%)##################                          (100%)###################                         (100%)####################                        (100%)#####################                       (100%)######################                      (100%)#######################                     (100%)########################                    (100%)#########################                   (100%)##########################                  (100%)###########################                 (100%)############################                (100%)#############################               (100%)##############################              (100%)###############################             (100%)################################            (100%)#################################           (100%)##################################          (100%)###################################         (100%)####################################        (100%)#####################################       (100%)######################################      (100%)#######################################     (100%)########################################    (100%)#########################################   (100%)##########################################  (100%)########################################### (100%)########################################### [100%]
+I, [2016-06-23T13:55:32.711861 #4070]  INFO -- default-centos-67:    1:chef                                                               (  1%)#                                           (  3%)##                                          (  6%)###                                         (  8%)####                                        ( 10%)#####                                       ( 13%)######                                      ( 15%)#######                                     ( 17%)########                                    ( 19%)#########                                   ( 22%)##########                                  ( 24%)###########                                 ( 26%)############                                ( 28%)#############                               ( 31%)##############                              ( 33%)###############                             ( 35%)################                            ( 38%)#################                           ( 40%)##################                          ( 42%)###################                         ( 44%)####################                        ( 47%)#####################                       ( 49%)######################                      ( 51%)#######################                     ( 53%)########################                    ( 56%)#########################                   ( 58%)##########################                  ( 60%)###########################                 ( 63%)############################                ( 65%)#############################               ( 67%)##############################              ( 69%)###############################             ( 72%)################################            ( 74%)#################################           ( 76%)##################################          ( 78%)###################################         ( 81%)####################################        ( 83%)#####################################       ( 85%)######################################      ( 88%)#######################################     ( 90%)########################################    ( 92%)#########################################   ( 94%)##########################################  ( 97%)########################################### ( 99%)########################################### [100%]
+I, [2016-06-23T13:55:46.270137 #4070]  INFO -- default-centos-67: Thank you for installing Chef!
+I, [2016-06-23T13:55:47.439904 #4070]  INFO -- default-centos-67: Transferring files to <default-centos-67>
+I, [2016-06-23T13:55:56.256148 #4070]  INFO -- default-centos-67: Starting Chef Client, version 12.11.18
+I, [2016-06-23T13:56:00.090158 #4070]  INFO -- default-centos-67: Creating a new client identity for default-centos-67 using the validator key.
+I, [2016-06-23T13:56:00.375143 #4070]  INFO -- default-centos-67: resolving cookbooks for run list: ["apache::default"]
+I, [2016-06-23T13:56:00.424121 #4070]  INFO -- default-centos-67: Synchronizing Cookbooks:
+I, [2016-06-23T13:56:00.441992 #4070]  INFO -- default-centos-67:   - apache (0.2.1)
+I, [2016-06-23T13:56:00.443856 #4070]  INFO -- default-centos-67: Installing Cookbook Gems:
+I, [2016-06-23T13:56:00.443939 #4070]  INFO -- default-centos-67: Compiling Cookbooks...
+I, [2016-06-23T13:56:00.453859 #4070]  INFO -- default-centos-67: Converging 3 resources
+I, [2016-06-23T13:56:00.455683 #4070]  INFO -- default-centos-67: Recipe: apache::server
+I, [2016-06-23T13:56:14.146263 #4070]  INFO -- default-centos-67:   * yum_package[httpd] action install
+I, [2016-06-23T13:56:14.150379 #4070]  INFO -- default-centos-67:     - install version 2.2.15-53.el6.centos of package httpd
+I, [2016-06-23T13:56:14.318098 #4070]  INFO -- default-centos-67:   * template[/var/www/html/index.html] action create
+I, [2016-06-23T13:56:14.400195 #4070]  INFO -- default-centos-67:     - create new file /var/www/html/index.html
+I, [2016-06-23T13:56:14.400341 #4070]  INFO -- default-centos-67:     - update content in file /var/www/html/index.html from none to 504d88
+I, [2016-06-23T13:56:14.400408 #4070]  INFO -- default-centos-67:     --- /var/www/html/index.html	2016-06-23 13:56:14.316159976 +0000
+I, [2016-06-23T13:56:14.400469 #4070]  INFO -- default-centos-67:     +++ /var/www/html/.chef-index.html20160623-145-1ibjawt	2016-06-23 13:56:14.315159966 +0000
+I, [2016-06-23T13:56:14.400526 #4070]  INFO -- default-centos-67:     @@ -1 +1,4 @@
+I, [2016-06-23T13:56:14.400583 #4070]  INFO -- default-centos-67:     + <h1>Hello, world!</h1>
+I, [2016-06-23T13:56:14.400639 #4070]  INFO -- default-centos-67:     + <h2>ipaddress: #{node['ipaddress']}
+I, [2016-06-23T13:56:14.844042 #4070]  INFO -- default-centos-67:     + </h2><h2>hostname: #{node['hostname']}</h2>
+I, [2016-06-23T13:56:16.740047 #4070]  INFO -- default-centos-67:   * service[httpd] action enable
+I, [2016-06-23T13:56:16.741789 #4070]  INFO -- default-centos-67:     - enable service service[httpd]
+I, [2016-06-23T13:56:19.937061 #4070]  INFO -- default-centos-67:   * service[httpd] action start
+I, [2016-06-23T13:56:19.938856 #4070]  INFO -- default-centos-67:     - start service service[httpd]
+I, [2016-06-23T13:56:20.662139 #4070]  INFO -- default-centos-67: 
+I, [2016-06-23T13:56:20.662296 #4070]  INFO -- default-centos-67: Running handlers:
+I, [2016-06-23T13:56:20.662361 #4070]  INFO -- default-centos-67: Running handlers complete
+I, [2016-06-23T13:56:20.751474 #4070]  INFO -- default-centos-67: Chef Client finished, 4/4 resources updated in 24 seconds
+I, [2016-06-23T13:56:23.998928 #4070]  INFO -- default-centos-67: Finished converging <default-centos-67> (1m30.23s).
+I, [2016-06-23T13:56:23.999999 #4070]  INFO -- default-centos-67: -----> Setting up <default-centos-67>...
+W, [2016-06-23T13:56:24.001382 #4070]  WARN -- default-centos-67: Running legacy setup for 'Docker' Driver
+I, [2016-06-23T13:56:28.114209 #4070]  INFO -- default-centos-67: -----> Installing Busser (busser)
+I, [2016-06-23T13:56:34.576431 #4070]  INFO -- default-centos-67: Fetching: thor-0.19.0.gemFetching: thor-0.19.0.gem (  3%)Fetching: thor-0.19.0.gem (  6%)Fetching: thor-0.19.0.gem (  9%)Fetching: thor-0.19.0.gem ( 12%)Fetching: thor-0.19.0.gem ( 15%)Fetching: thor-0.19.0.gem ( 18%)Fetching: thor-0.19.0.gem ( 21%)Fetching: thor-0.19.0.gem ( 24%)Fetching: thor-0.19.0.gem ( 27%)Fetching: thor-0.19.0.gem ( 30%)Fetching: thor-0.19.0.gem ( 33%)Fetching: thor-0.19.0.gem ( 35%)Fetching: thor-0.19.0.gem ( 53%)Fetching: thor-0.19.0.gem ( 71%)Fetching: thor-0.19.0.gem ( 89%)Fetching: thor-0.19.0.gem (100%)Fetching: thor-0.19.0.gem (100%)
+I, [2016-06-23T13:56:35.493086 #4070]  INFO -- default-centos-67: Successfully installed thor-0.19.0
+I, [2016-06-23T13:56:35.665662 #4070]  INFO -- default-centos-67: Fetching: busser-0.7.1.gemFetching: busser-0.7.1.gem (  9%)Fetching: busser-0.7.1.gem ( 20%)Fetching: busser-0.7.1.gem ( 31%)Fetching: busser-0.7.1.gem ( 43%)Fetching: busser-0.7.1.gem ( 54%)Fetching: busser-0.7.1.gem ( 64%)Fetching: busser-0.7.1.gem ( 76%)Fetching: busser-0.7.1.gem ( 87%)Fetching: busser-0.7.1.gem ( 98%)Fetching: busser-0.7.1.gem (100%)Fetching: busser-0.7.1.gem (100%)
+I, [2016-06-23T13:56:36.162049 #4070]  INFO -- default-centos-67: Successfully installed busser-0.7.1
+I, [2016-06-23T13:56:36.162206 #4070]  INFO -- default-centos-67: 2 gems installed
+I, [2016-06-23T13:56:36.391087 #4070]  INFO -- default-centos-67: Installing Busser plugins: busser-serverspec
+I, [2016-06-23T13:56:53.671119 #4070]  INFO -- default-centos-67: Plugin serverspec installed (version 0.5.9)
+I, [2016-06-23T13:56:53.779113 #4070]  INFO -- default-centos-67: -----> Running postinstall for serverspec plugin
+I, [2016-06-23T13:56:56.369559 #4070]  INFO -- default-centos-67: Finished setting up <default-centos-67> (0m32.37s).
+I, [2016-06-23T13:56:56.369788 #4070]  INFO -- default-centos-67: -----> Verifying <default-centos-67>...
+W, [2016-06-23T13:56:56.479656 #4070]  WARN -- default-centos-67: Running legacy verify for 'Docker' Driver
+I, [2016-06-23T13:56:56.480146 #4070]  INFO -- default-centos-67: Preparing files for transfer
+I, [2016-06-23T13:56:59.367155 #4070]  INFO -- default-centos-67: Suite path directory /tmp/verifier/suites does not exist, skipping.
+I, [2016-06-23T13:56:59.385382 #4070]  INFO -- default-centos-67: Transferring files to <default-centos-67>
+I, [2016-06-23T13:56:59.949214 #4070]  INFO -- default-centos-67: -----> Running serverspec test suite
+I, [2016-06-23T13:56:59.963091 #4070]  INFO -- default-centos-67: -----> Installing Serverspec..
+I, [2016-06-23T13:57:01.611677 #4070]  INFO -- default-centos-67: Fetching: rspec-support-3.4.1.gemFetching: rspec-support-3.4.1.gem (  7%)Fetching: rspec-support-3.4.1.gem ( 16%)Fetching: rspec-support-3.4.1.gem ( 24%)Fetching: rspec-support-3.4.1.gem ( 33%)Fetching: rspec-support-3.4.1.gem ( 42%)Fetching: rspec-support-3.4.1.gem ( 50%)Fetching: rspec-support-3.4.1.gem ( 59%)Fetching: rspec-support-3.4.1.gem ( 67%)Fetching: rspec-support-3.4.1.gem ( 76%)Fetching: rspec-support-3.4.1.gem ( 85%)Fetching: rspec-support-3.4.1.gem ( 93%)Fetching: rspec-support-3.4.1.gem (100%)Fetching: rspec-support-3.4.1.gem (100%)
+I, [2016-06-23T13:57:01.924701 #4070]  INFO -- default-centos-67: Fetching: rspec-core-3.4.4.gemFetching: rspec-core-3.4.4.gem (  2%)Fetching: rspec-core-3.4.4.gem (  4%)Fetching: rspec-core-3.4.4.gem (  6%)Fetching: rspec-core-3.4.4.gem (  8%)Fetching: rspec-core-3.4.4.gem (  9%)Fetching: rspec-core-3.4.4.gem ( 11%)Fetching: rspec-core-3.4.4.gem ( 13%)Fetching: rspec-core-3.4.4.gem ( 15%)Fetching: rspec-core-3.4.4.gem ( 17%)Fetching: rspec-core-3.4.4.gem ( 19%)Fetching: rspec-core-3.4.4.gem ( 21%)Fetching: rspec-core-3.4.4.gem ( 22%)Fetching: rspec-core-3.4.4.gem ( 34%)Fetching: rspec-core-3.4.4.gem ( 45%)Fetching: rspec-core-3.4.4.gem ( 56%)Fetching: rspec-core-3.4.4.gem ( 67%)Fetching: rspec-core-3.4.4.gem ( 79%)Fetching: rspec-core-3.4.4.gem ( 90%)Fetching: rspec-core-3.4.4.gem (100%)Fetching: rspec-core-3.4.4.gem (100%)
+I, [2016-06-23T13:57:02.271666 #4070]  INFO -- default-centos-67: Fetching: diff-lcs-1.2.5.gemFetching: diff-lcs-1.2.5.gem ( 33%)Fetching: diff-lcs-1.2.5.gem ( 66%)Fetching: diff-lcs-1.2.5.gem ( 99%)Fetching: diff-lcs-1.2.5.gem (100%)Fetching: diff-lcs-1.2.5.gem (100%)
+I, [2016-06-23T13:57:02.575675 #4070]  INFO -- default-centos-67: Fetching: rspec-expectations-3.4.0.gemFetching: rspec-expectations-3.4.0.gem ( 21%)Fetching: rspec-expectations-3.4.0.gem ( 43%)Fetching: rspec-expectations-3.4.0.gem ( 65%)Fetching: rspec-expectations-3.4.0.gem ( 87%)Fetching: rspec-expectations-3.4.0.gem (100%)Fetching: rspec-expectations-3.4.0.gem (100%)
+I, [2016-06-23T13:57:02.883731 #4070]  INFO -- default-centos-67: Fetching: rspec-mocks-3.4.1.gemFetching: rspec-mocks-3.4.1.gem ( 22%)Fetching: rspec-mocks-3.4.1.gem ( 44%)Fetching: rspec-mocks-3.4.1.gem ( 65%)Fetching: rspec-mocks-3.4.1.gem ( 87%)Fetching: rspec-mocks-3.4.1.gem (100%)Fetching: rspec-mocks-3.4.1.gem (100%)
+I, [2016-06-23T13:57:03.164025 #4070]  INFO -- default-centos-67: Fetching: rspec-3.4.0.gemFetching: rspec-3.4.0.gem (100%)Fetching: rspec-3.4.0.gem (100%)
+I, [2016-06-23T13:57:03.448049 #4070]  INFO -- default-centos-67: Fetching: rspec-its-1.2.0.gemFetching: rspec-its-1.2.0.gem (100%)Fetching: rspec-its-1.2.0.gem (100%)
+I, [2016-06-23T13:57:03.737686 #4070]  INFO -- default-centos-67: Fetching: multi_json-1.12.1.gemFetching: multi_json-1.12.1.gem ( 61%)Fetching: multi_json-1.12.1.gem (100%)Fetching: multi_json-1.12.1.gem (100%)
+I, [2016-06-23T13:57:04.118661 #4070]  INFO -- default-centos-67: Fetching: net-ssh-3.2.0.gemFetching: net-ssh-3.2.0.gem (  9%)Fetching: net-ssh-3.2.0.gem ( 18%)Fetching: net-ssh-3.2.0.gem ( 27%)Fetching: net-ssh-3.2.0.gem ( 35%)Fetching: net-ssh-3.2.0.gem ( 44%)Fetching: net-ssh-3.2.0.gem ( 53%)Fetching: net-ssh-3.2.0.gem ( 62%)Fetching: net-ssh-3.2.0.gem ( 71%)Fetching: net-ssh-3.2.0.gem ( 80%)Fetching: net-ssh-3.2.0.gem ( 89%)Fetching: net-ssh-3.2.0.gem ( 97%)Fetching: net-ssh-3.2.0.gem (100%)Fetching: net-ssh-3.2.0.gem (100%)
+I, [2016-06-23T13:57:04.475642 #4070]  INFO -- default-centos-67: Fetching: net-scp-1.2.1.gemFetching: net-scp-1.2.1.gem ( 48%)Fetching: net-scp-1.2.1.gem ( 98%)Fetching: net-scp-1.2.1.gem (100%)Fetching: net-scp-1.2.1.gem (100%)
+I, [2016-06-23T13:57:04.745081 #4070]  INFO -- default-centos-67: Fetching: net-telnet-0.1.1.gemFetching: net-telnet-0.1.1.gem ( 93%)Fetching: net-telnet-0.1.1.gem (100%)Fetching: net-telnet-0.1.1.gem (100%)
+I, [2016-06-23T13:57:05.072025 #4070]  INFO -- default-centos-67: Fetching: sfl-2.2.gemFetching: sfl-2.2.gem (100%)Fetching: sfl-2.2.gem (100%)
+I, [2016-06-23T13:57:05.343633 #4070]  INFO -- default-centos-67: Fetching: specinfra-2.59.2.gemFetching: specinfra-2.59.2.gem ( 20%)Fetching: specinfra-2.59.2.gem ( 41%)Fetching: specinfra-2.59.2.gem ( 61%)Fetching: specinfra-2.59.2.gem ( 82%)Fetching: specinfra-2.59.2.gem (100%)Fetching: specinfra-2.59.2.gem (100%)
+I, [2016-06-23T13:57:05.748667 #4070]  INFO -- default-centos-67: Fetching: serverspec-2.36.0.gemFetching: serverspec-2.36.0.gem ( 41%)Fetching: serverspec-2.36.0.gem ( 83%)Fetching: serverspec-2.36.0.gem (100%)Fetching: serverspec-2.36.0.gem (100%)
+I, [2016-06-23T13:57:05.905117 #4070]  INFO -- default-centos-67: -----> serverspec installed (version 2.36.0)
+I, [2016-06-23T13:57:06.077110 #4070]  INFO -- default-centos-67: /opt/chef/embedded/bin/ruby -I/tmp/verifier/suites/serverspec -I/tmp/verifier/gems/gems/rspec-support-3.4.1/lib:/tmp/verifier/gems/gems/rspec-core-3.4.4/lib /opt/chef/embedded/bin/rspec --pattern /tmp/verifier/suites/serverspec/\*\*/\*_spec.rb --color --format documentation --default-path /tmp/verifier/suites/serverspec
+I, [2016-06-23T13:57:06.855200 #4070]  INFO -- default-centos-67: 
+I, [2016-06-23T13:57:06.855354 #4070]  INFO -- default-centos-67: apache::default
+I, [2016-06-23T13:57:06.855421 #4070]  INFO -- default-centos-67: [33m  does something (PENDING: Replace this with meaningful tests)[0m
+I, [2016-06-23T13:57:06.856938 #4070]  INFO -- default-centos-67: 
+I, [2016-06-23T13:57:06.857030 #4070]  INFO -- default-centos-67: Pending: (Failures listed here are expected and do not affect your suite's status)
+I, [2016-06-23T13:57:06.857095 #4070]  INFO -- default-centos-67: [33m
+I, [2016-06-23T13:57:06.857230 #4070]  INFO -- default-centos-67:   1) apache::default does something[0m
+I, [2016-06-23T13:57:06.857296 #4070]  INFO -- default-centos-67:      [36m# Replace this with meaningful tests[0m
+I, [2016-06-23T13:57:06.857354 #4070]  INFO -- default-centos-67: [36m     # /tmp/verifier/suites/serverspec/default_spec.rb:6
+I, [2016-06-23T13:57:06.857409 #4070]  INFO -- default-centos-67: [0m
+I, [2016-06-23T13:57:06.857462 #4070]  INFO -- default-centos-67: 
+I, [2016-06-23T13:57:06.857516 #4070]  INFO -- default-centos-67: Finished in 0.00106 seconds (files took 0.69645 seconds to load)
+I, [2016-06-23T13:57:06.857571 #4070]  INFO -- default-centos-67: [33m1 example, 0 failures, 1 pending[0m
+I, [2016-06-23T13:57:06.857639 #4070]  INFO -- default-centos-67: 
+I, [2016-06-23T13:57:06.964380 #4070]  INFO -- default-centos-67: Finished verifying <default-centos-67> (0m10.48s).
+I, [2016-06-23T13:57:06.965934 #4070]  INFO -- default-centos-67: -----> Destroying <default-centos-67>...
+I, [2016-06-23T13:57:07.253476 #4070]  INFO -- default-centos-67: UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+I, [2016-06-23T13:57:07.253796 #4070]  INFO -- default-centos-67: root                4960                1021                0                   13:54               ?                   00:00:00            /usr/sbin/sshd -D -o UseDNS=no -o UsePAM=no -o PasswordAuthentication=yes -o UsePrivilegeSeparation=no -o PidFile=/tmp/sshd.pid
+I, [2016-06-23T13:57:07.253908 #4070]  INFO -- default-centos-67: root                4997                4960                0                   13:54               ?                   00:00:00            sshd: kitchen@pts/0
+I, [2016-06-23T13:57:07.253980 #4070]  INFO -- default-centos-67: root                5415                4960                0                   13:56               ?                   00:00:00            /usr/sbin/httpd
+I, [2016-06-23T13:57:07.254065 #4070]  INFO -- default-centos-67: apache              5417                5415                0                   13:56               ?                   00:00:00            /usr/sbin/httpd
+I, [2016-06-23T13:57:07.254133 #4070]  INFO -- default-centos-67: apache              5418                5415                0                   13:56               ?                   00:00:00            /usr/sbin/httpd
+I, [2016-06-23T13:57:07.254223 #4070]  INFO -- default-centos-67: apache              5419                5415                0                   13:56               ?                   00:00:00            /usr/sbin/httpd
+I, [2016-06-23T13:57:07.254290 #4070]  INFO -- default-centos-67: apache              5420                5415                0                   13:56               ?                   00:00:00            /usr/sbin/httpd
+I, [2016-06-23T13:57:07.254373 #4070]  INFO -- default-centos-67: apache              5421                5415                0                   13:56               ?                   00:00:00            /usr/sbin/httpd
+I, [2016-06-23T13:57:07.254440 #4070]  INFO -- default-centos-67: apache              5422                5415                0                   13:56               ?                   00:00:00            /usr/sbin/httpd
+I, [2016-06-23T13:57:07.254500 #4070]  INFO -- default-centos-67: apache              5423                5415                0                   13:56               ?                   00:00:00            /usr/sbin/httpd
+I, [2016-06-23T13:57:07.254580 #4070]  INFO -- default-centos-67: apache              5424                5415                0                   13:56               ?                   00:00:00            /usr/sbin/httpd
+I, [2016-06-23T13:57:09.127268 #4070]  INFO -- default-centos-67: cc20b1f2058cf8a677bd72bb2908e328fb32cc552f7e74349b5dbadc2405a569
+I, [2016-06-23T13:57:10.954849 #4070]  INFO -- default-centos-67: cc20b1f2058cf8a677bd72bb2908e328fb32cc552f7e74349b5dbadc2405a569
+I, [2016-06-23T13:57:10.972350 #4070]  INFO -- default-centos-67: Finished destroying <default-centos-67> (0m4.00s).
+I, [2016-06-23T13:57:10.973614 #4070]  INFO -- default-centos-67: Finished testing <default-centos-67> (2m19.21s).
